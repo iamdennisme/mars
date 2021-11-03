@@ -644,7 +644,7 @@ static void __async_log_thread() {
 
 static void __appender_sync(const XLoggerInfo* _info, const char* _log) {
 
-    char temp[16 * 1024] = {0};     // tell perry,ray if you want modify size.
+    char temp[32 * 1024] = {0};     // tell perry,ray if you want modify size.
     PtrBuffer log(temp, 0, sizeof(temp));
     log_formater(_info, _log, log);
 
@@ -658,7 +658,7 @@ static void __appender_async(const XLoggerInfo* _info, const char* _log) {
     ScopedLock lock(sg_mutex_buffer_async);
     if (NULL == sg_log_buff) return;
 
-    char temp[16*1024] = {0};       //tell perry,ray if you want modify size.
+    char temp[32*1024] = {0};       //tell perry,ray if you want modify size.
     PtrBuffer log_buff(temp, 0, sizeof(temp));
     log_formater(_info, _log, log_buff);
 
@@ -689,7 +689,7 @@ void xlogger_appender(const XLoggerInfo* _info, const char* _log) {
 
     if (2 <= (int)recursion.Get() && NULL == s_recursion_str.get()) {
         if ((int)recursion.Get() > 10) return;
-        char* strrecursion = (char*)calloc(16 * 1024, 1);
+        char* strrecursion = (char*)calloc(32 * 1024, 1);
         s_recursion_str.set((void*)(strrecursion));
 
         XLoggerInfo info = *_info;
@@ -698,7 +698,7 @@ void xlogger_appender(const XLoggerInfo* _info, const char* _log) {
         char recursive_log[256] = {0};
         snprintf(recursive_log, sizeof(recursive_log), "ERROR!!! xlogger_appender Recursive calls!!!, count:%d", (int)recursion.Get());
 
-        PtrBuffer tmp(strrecursion, 0, 16*1024);
+        PtrBuffer tmp(strrecursion, 0, 32*1024);
         log_formater(&info, recursive_log, tmp);
 
         strncat(strrecursion, _log, 4096);
