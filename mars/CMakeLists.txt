@@ -7,7 +7,7 @@ add_subdirectory(comm comm)
 add_subdirectory(boost boost)
 add_subdirectory(app app)
 add_subdirectory(baseevent baseevent)
-add_subdirectory(log xlog)
+add_subdirectory(log xlogjojo)
 add_subdirectory(sdt sdt)
 add_subdirectory(stn stn)
 
@@ -29,7 +29,7 @@ if(ANDROID)
     link_directories(app baseevent log sdt stn comm boost)
 
     # marsxlog
-    set(SELF_LIB_NAME marsxlog)
+    set(SELF_LIB_NAME marsxlogjojo)
 
     file(GLOB SELF_SRC_FILES libraries/mars_android_sdk/jni/JNI_OnLoad.cc
             libraries/mars_xlog_sdk/jni/import.cc)
@@ -43,7 +43,7 @@ if(ANDROID)
          target_link_libraries(${SELF_LIB_NAME} "-Wl,--gc-sections"
                                 ${log-lib}
                                 ${z-lib}
-                                xlog
+                                xlogjojo
                                 mars-boost
                                 comm)
 
@@ -51,7 +51,7 @@ if(ANDROID)
         target_link_libraries(${SELF_LIB_NAME} "-Wl,--gc-sections -Wl,--version-script=\"${EXPORT_XLOG_EXP_FILE}\""
                                 ${log-lib}
                                 ${z-lib}
-                                xlog
+                                xlogjojo
                                 mars-boost
                                 comm)
     endif()
@@ -78,7 +78,7 @@ if(ANDROID)
                             baseevent
                             comm
                             mars-boost
-                            marsxlog)
+                            marsxlogjojo)
     else()
         target_link_libraries(${SELF_LIB_NAME} "-Wl,--gc-sections -Wl,--version-script=\"${EXPORT_EXP_FILE}\""
                             ${log-lib}
@@ -88,7 +88,7 @@ if(ANDROID)
                             baseevent
                             comm
                             mars-boost
-                            marsxlog)
+                            marsxlogjojo)
     endif()
 elseif(APPLE)
 

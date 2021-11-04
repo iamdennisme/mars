@@ -169,7 +169,7 @@ if __name__ == '__main__':
                 main(True, archs)
                 break
             elif num == '3':
-                main(False, archs, '--target marsxlog')
+                main(False, archs, '--target marsxlogjojo')
                 break
             elif num == '4':
                 break

@@ -3,9 +3,9 @@ TEMP_LOCAL_PATH :=$(call my-dir)
 
 
 include $(CLEAR_VARS)  
-LOCAL_MODULE := xlog
-LOCAL_MODULE_FILENAME := libmarsxlog
-LOCAL_SRC_FILES := $(TEMP_LOCAL_PATH)/libmarsxlog.so 
+LOCAL_MODULE := xlogjojo
+LOCAL_MODULE_FILENAME := libmarsxlogjojo
+LOCAL_SRC_FILES := $(TEMP_LOCAL_PATH)/libmarsxlogjojo.so 
 LOCAL_SRC_FILES := $(LOCAL_SRC_FILES:$(LOCAL_PATH)/%=%)
 
 

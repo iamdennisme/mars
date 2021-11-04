@@ -14,7 +14,7 @@ include_directories(proto/protobuf)
 include_directories(../../mars/comm)
 include_directories(../../mars/openssl/include)
 
-add_subdirectory(../../mars/log xlog.out)
+add_subdirectory(../../mars/log xlogjojo.out)
 add_subdirectory(../../mars/app app.out)
 add_subdirectory(../../mars/baseevent baseevent.out)
 add_subdirectory(../../mars/boost boost.out)
@@ -149,7 +149,7 @@ set(CMAKE_FIND_LIBRARY_SUFFIXES ".lib")
 link_directories(${SELF_LIBS_OUT})
 
 target_link_libraries(${PROJECT_NAME} ws2_32.lib comsuppw.lib
-						xlog
+						xlogjojo
                         app
                         baseevent
                         mars-boost
